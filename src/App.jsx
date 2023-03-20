@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Upload CSV file to Azure Blob Storage</h1>
+      <h1>Upload CSV file to keep resources in Maintenance mode</h1>
       {storageConfigured && !uploading && DisplayForm()}
       {storageConfigured && uploading && <div>Uploading</div>}
       <hr />
