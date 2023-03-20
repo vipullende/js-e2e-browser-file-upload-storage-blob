@@ -29,11 +29,17 @@ const App = () => {
     // capture file into state
     setFileSelected(event.target.files[0]);
   };
-
+  function getExtension(filename) {
+    return filename.split('.').pop().toLowerCase()
+  }
   const onFileUpload = async () => {
 
-    if(fileSelected && fileSelected?.name){
-    // prepare UI
+    const extensionFlag = getExtension(fileSelected?.name) === 'csv' ? true:false;
+    if (!extensionFlag)
+      alert('Only .CSV file are allowed to upload'); 
+    
+    if(fileSelected && fileSelected?.name && extensionFlag){
+    // prepare UI 
     setUploading(true);
 
     // *** UPLOAD TO AZURE STORAGE ***
@@ -61,7 +67,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Upload file to Azure Blob Storage</h1>
+      <h1>Upload CSV file to Azure Blob Storage</h1>
       {storageConfigured && !uploading && DisplayForm()}
       {storageConfigured && uploading && <div>Uploading</div>}
       <hr />

@@ -9,7 +9,6 @@ const DisplayImagesFromContainer = ({blobList}) => (
               <div>
                 {item.name}
                 <br />
-                <img src={item.url} alt={item.name} height="200" />
               </div>
             </li>
           );
